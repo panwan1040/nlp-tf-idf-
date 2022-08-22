@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    </head>
+    <body>
+
+
+        <center>
+           
+                <table>
+                    <tr>
+                     <form method="POST" enctype="multipart/form-data">
+                        <label for="files">Select files:</label>
+                        <input type="file" id="files" name="files" multiple><br><br>
+                        <td>
+                            <button class="custom-btn btn-3" id="upload-btn"><span>Confirme</span></button>
+                        </td>
+                     </form>   
+                    </tr>
+                    <tr>
+                    
+                     <form action="/find" method="post">
+                        <td>
+                            <input type="text"  name="find-text">
+                        </td>
+                        <td>  
+                            <button name="forwardBtn" type="submit">Find</button>
+                        </td>
+                        </form>
+                    </tr>
+                </table>
+
+                {{findis}}
+                 {{words_gen}}
+            <br>
+            {{words_tf_idf}}
+            </center>
+
+           
+
+
+        </body>
+    
+</html>
