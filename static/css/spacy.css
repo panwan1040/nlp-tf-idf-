@@ -1,0 +1,757 @@
+
+ body
+ {
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+   color: #cdcdcd;
+   font-family: Consolas;
+ }
+ 
+ #menuToggle
+ {
+   display: block;
+   position: relative;
+   top: 50px;
+   left: 50px;
+   
+   z-index: 1;
+   
+   -webkit-user-select: none;
+   user-select: none;
+ }
+ 
+ #menuToggle a
+ {
+   text-decoration: none;
+   color: #232323;
+   
+   transition: color 0.3s ease;
+ }
+ 
+ #menuToggle a:hover
+ {
+   color: tomato;
+ }
+ 
+ 
+ #menuToggle input
+ {
+   display: block;
+   width: 40px;
+   height: 32px;
+   position: absolute;
+   top: -7px;
+   left: -5px;
+   
+   cursor: pointer;
+   
+   opacity: 0; /* hide this */
+   z-index: 2; /* and place it over the hamburger */
+   
+   -webkit-touch-callout: none;
+ }
+ 
+ /*
+  * Just a quick hamburger
+  */
+ #menuToggle span
+ {
+   display: block;
+   width: 33px;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+   
+   background: #cdcdcd;
+   border-radius: 3px;
+   
+   z-index: 1;
+   
+   transform-origin: 4px 0px;
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               opacity 0.55s ease;
+ }
+ 
+ #menuToggle span:first-child
+ {
+   transform-origin: 0% 0%;
+ }
+ 
+ #menuToggle span:nth-last-child(2)
+ {
+   transform-origin: 0% 100%;
+ }
+ 
+ /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+ #menuToggle input:checked ~ span
+ {
+   opacity: 1;
+   transform: rotate(45deg) translate(-2px, -1px);
+   background: #232323;
+ }
+ 
+ /*
+  * But let's hide the middle one.
+  */
+ #menuToggle input:checked ~ span:nth-last-child(3)
+ {
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+ }
+ 
+ /*
+  * Ohyeah and the last one should go the other direction
+  */
+ #menuToggle input:checked ~ span:nth-last-child(2)
+ {
+   transform: rotate(-45deg) translate(0, -1px);
+ }
+ 
+ /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+ #menu
+ {
+   position: absolute;
+   width: 300px;
+   margin: -100px 0 0 -50px;
+   padding: 50px;
+   padding-top: 125px;
+   
+   background: #ededed;
+   list-style-type: none;
+   -webkit-font-smoothing: antialiased;
+   /* to stop flickering of text in safari */
+   
+   transform-origin: 0% 0%;
+   transform: translate(-100%, 0);
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+ }
+ 
+ #menu li
+ {
+   padding: 10px 0;
+   font-size: 22px;
+ }
+ 
+ /*
+  * And let's slide it in from the left
+  */
+ #menuToggle input:checked ~ ul
+ {
+   transform: none;
+ }
+
+ @import 'https://fonts.googleapis.com/css2?family=Goldman&display=swap';
+html,body {
+  height: 100%;
+  width: 100%;
+}
+.text-change-container {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.text-change {
+  font-family: 'Goldman', monospace;
+  font-weight: normal;
+  font-size: larger;
+  color: #c8c8c8;
+  filter: drop-shadow(0 0 0.3em rgba(200,200,200,0.3));
+}
+.dud {
+  color: rgba(200,30,30,0.8);
+  filter: drop-shadow(0 0 0.5em #f00);
+}
+
+.bg-color-1 {
+  background-color: rgb(16, 17, 36);
+}
+
+
+
+
+/* checkbox */
+/*tipografia*/
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap");
+
+/* custom checkbox */
+.checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin: 10px 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Inconsolata", monospace;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ocultamos el checkbox por Defecto*/
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* checkbox personalido para Backtrack*/
+.check {
+  position: absolute;
+  top: 2.2px;
+  left: 17px;
+  height: 15px;
+  width: 15px;
+  background-color: #f2f2f2;
+  border: 1px solid #cecece;
+  border-radius: 50%;
+}
+
+/* pasar por encima del checkbox */
+.checkbox:hover input ~ .check {
+  border: 1px solid #aaa;
+}
+
+
+.color-1 input:checked ~ .check{
+    background-color:  #3B7573;
+    border: 1px solid transparent;
+}
+  
+.color-2 input:checked ~ .check {
+    background-color:  #493770;
+    border: 1px solid transparent;
+}
+
+.color-3 input:checked ~ .check {
+background-color:  #7F4D85;
+border: 1px solid transparent;
+}
+
+.color-4 input:checked ~ .check {
+background-color:  #B8587B;
+border: 1px solid transparent;
+}
+.color-5 input:checked ~ .check {
+background-color:  #EEBE8F;
+    border: 1px solid transparent;
+}
+
+.color-6 input:checked ~ .check {
+    background-color:  #925BB3;
+    border: 1px solid transparent;
+}
+
+.color-7 input:checked ~ .check {
+    background-color: #7055AB;
+    border: 1px solid transparent;
+}
+
+.color-8 input:checked ~ .check {
+    background-color:  #3C2B61;
+    border: 1px solid transparent;
+}
+.color-9 input:checked ~ .check {
+    background-color: #FFE7BD;
+    border: 1px solid transparent;
+}
+
+.color-10 input:checked ~ .check {
+    background-color:  #FF4F7E;
+    border: 1px solid transparent;
+}
+
+.color-11 input:checked ~ .check {
+    background-color: #8CC63E;
+    border: 1px solid transparent;
+}
+
+.color-12 input:checked ~ .check {
+    background-color: #F02C89;
+    border: 1px solid transparent;
+}
+.color-13 input:checked ~ .check {
+    background-color:  #FB943B;
+    border: 1px solid transparent;
+}
+
+.color-14 input:checked ~ .check {
+    background-color:  #F4CD26;
+    border: 1px solid transparent;
+}
+
+.color-15 input:checked ~ .check {
+    background-color:  #07206D;
+    border: 1px solid transparent;
+}
+
+.color-16 input:checked ~ .check {
+    background-color:  #F75959;
+    border: 1px solid transparent;
+}
+.color-17 input:checked ~ .check {
+background-color: #F79D39;
+    border: 1px solid transparent;
+}
+
+.color-18 input:checked ~ .check {
+    background-color:  #15BED1;
+    border: 1px solid transparent;
+}
+
+
+
+.color-1 input:checked ~ .check{
+  background-color:  #3B7573;
+  border: 1px solid transparent;
+}
+
+.color-2 input:checked ~ .check {
+  background-color:  #493770;
+  border: 1px solid transparent;
+}
+
+.color-3 input:checked ~ .check {
+background-color:  #7F4D85;
+border: 1px solid transparent;
+}
+
+.color-4 input:checked ~ .check {
+background-color:  #B8587B;
+border: 1px solid transparent;
+}
+.color-5 input:checked ~ .check {
+background-color:  #EEBE8F;
+  border: 1px solid transparent;
+}
+
+.color-6 input:checked ~ .check {
+  background-color:  #925BB3;
+  border: 1px solid transparent;
+}
+
+.color-7 input:checked ~ .check {
+  background-color: #7055AB;
+  border: 1px solid transparent;
+}
+
+.color-8 input:checked ~ .check {
+  background-color:  #3C2B61;
+  border: 1px solid transparent;
+}
+.color-9 input:checked ~ .check {
+  background-color: #FFE7BD;
+  border: 1px solid transparent;
+}
+
+.color-10 input:checked ~ .check {
+  background-color:  #FF4F7E;
+  border: 1px solid transparent;
+}
+
+.color-11 input:checked ~ .check {
+  background-color: #8CC63E;
+  border: 1px solid transparent;
+}
+
+.color-12 input:checked ~ .check {
+  background-color: #F02C89;
+  border: 1px solid transparent;
+}
+.color-13 input:checked ~ .check {
+  background-color:  #FB943B;
+  border: 1px solid transparent;
+}
+
+.color-14 input:checked ~ .check {
+  background-color:  #F4CD26;
+  border: 1px solid transparent;
+}
+
+.color-15 input:checked ~ .check {
+  background-color:  #07206D;
+  border: 1px solid transparent;
+}
+
+.color-16 input:checked ~ .check {
+  background-color:  #F75959;
+  border: 1px solid transparent;
+}
+.color-17 input:checked ~ .check {
+background-color: #F79D39;
+  border: 1px solid transparent;
+}
+
+.color-18 input:checked ~ .check {
+  background-color:  #15BED1;
+  border: 1px solid transparent;
+}
+
+
+
+
+
+/* text area */
+
+.textareax {
+  color: #232323 ;
+  width: 60%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------- */
+
+.check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox input:checked ~ .check:after {
+  display: block;
+}
+
+/* checkmark style */
+.checkbox .check:after {
+  -webkit-border-radius: 30px;
+  height: 25px;
+  width: 25px;
+  position: absolutuve;
+  left: -8px;
+  top: -8px;
+  -webkit-animation: pulsate 1s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+.color-1 .check:after {
+  border: 3px solid #3B7573;
+}
+
+.color-2 .check:after {
+  border: 3px solid #493770;
+}
+
+.color-3 .check:after {
+  border: 3px solid #7F4D85;
+}
+
+.color-4 .check:after {
+  border: 3px solid #B8587B;
+}
+
+.color-5 .check:after {
+    border: 3px solid #EEBE8F;
+}
+  
+.color-6 .check:after {
+border: 3px solid #925BB3;
+}
+
+.color-7 .check:after {
+border: 3px solid #7055AB;
+}
+
+.color-8 .check:after {
+border: 3px solid #3C2B61;
+}
+.color-9 .check:after {
+border: 3px solid #FFE7BD;
+}
+
+.color-10 .check:after {
+border: 3px solid #FF4F7E;
+}
+
+.color-11 .check:after {
+border: 3px solid #8CC63E;
+}
+
+.color-12 .check:after {
+border: 3px solid #F02C89;
+}
+.color-13 .check:after {
+border: 3px solid #FB943B;
+}
+
+.color-14 .check:after {
+border: 3px solid #F4CD26;
+}
+
+.color-15 .check:after {
+border: 3px solid #07206D;
+}
+
+.color-16 .check:after {
+border: 3px solid #F75959;
+}
+.color-17 .check:after {
+border: 3px solid #F79D39;
+}
+
+.color-18 .check:after {
+border: 3px solid #15BED1;
+}
+
+/*animación*/
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0;
+  }
+}
+
+
+
+/* btn */
+
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label,
+.login-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.login-box .aa {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  background-color: #232323;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box .aa:hover {
+  background: #03e9f4;
+  color: #232323;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box .aa span {
+  position: absolute;
+  display: block;
+}
+
+.login-box .aa span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box .aa span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box .aa span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box .aa span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+
+/* scorll */
+
+section
+{
+  background-color:#000;
+  color:White;
+  padding:50px;
+  text-align:justify;
+}
+
+::-webkit-scrollbar
+{
+  width:0;
+}
+
+#scrollPath
+{
+  position:fixed;
+  top:0;
+  right:0;
+  width:10px;
+  height:100%;
+  background:rgba(255,255,255,0.05);
+}
+
+#progressbar
+{
+  position:fixed;
+  top:0;
+  right:0;
+  width:10px;
+  background:linear-gradient(to top, #008AFF, #00FFE7);
+  animation:animate 5s linear infinite;
+}
+
+@keyframes animate
+{
+  0%, 100%
+  {
+    filter:hue-rotate(0deg);
+  }
+  50%
+  {
+    filter:hue-rotate(360deg);
+  }
+}
+
+#progressbar:before
+{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to top, #008AFF, #00FFE7);
+  filter:blur(10px);
+}
+
+#progressbar:after
+{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to top, #008AFF, #00FFE7);
+  filter:blur(10px);
+}

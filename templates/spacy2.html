@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spacy2</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form action="" id="form_spc" name="form_spc" method="post">
+        {{form.hidden_tag()}}
+        {{form.text.label}}
+        {{form.text()}}
+
+<!-- boolean f -->
+
+
+<!-- test -->
+
+
+
+
+<!--  -->
+    <br>
+    <label class="checkbox color-1">CARDINAL
+        {{form.ch1()}}
+        <span class="check"></span>
+    </label>
+    <label class="checkbox color-2">DATE
+        {{form.ch2()}}
+        <span class="check"></span>
+    </label>
+    <label class="checkbox color-3">EVENT
+        {{form.ch3()}}
+        <span class="check"></span>
+    </label>
+    <label class="checkbox color-4">FAC
+        {{form.ch4()}}
+        <span class="check"></span>
+    </label>
+    <label class="checkbox color-5">GPE
+        {{form.ch5()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-6">LANGUAGE
+        {{form.ch6()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-7">LAW
+        {{form.ch7()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-8">LOC
+        {{form.ch8()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-9">MONEY
+        {{form.ch9()}}
+        <span class="check"></span>
+      </label>
+       <br>
+       <label class="checkbox color-10">NORP
+        {{form.ch10()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-11">ORDINAL
+        {{form.ch11()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-12">ORG
+        {{form.ch12()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-13">PERCENT
+        {{form.ch13()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-14">PERSON
+        {{form.ch14()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-15">PRODUCT
+        {{form.ch15()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-16">QUANTITY
+        {{form.ch16()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-17">TIME
+        {{form.ch17()}}
+        <span class="check"></span>
+      </label>
+      <label class="checkbox color-18">WORK_OF_ART
+        {{form.ch18()}}
+        <span class="check"></span>
+      </label>     
+    <br>
+        {{form.submit()}}
+    </form>
+    <hr>
+    {% if text %}
+    
+    <h1>message = {{show_}}</h1>
+    {% else %}
+<h1>ไม่พบข้อมูล</h1>
+    {% endif %}
+    {{d}}
+<script type=text/javascript src="{{url_for('static', filename='js/main.js') }}"></script>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/spacy.css') }}"> 
+</body>
+</html>
