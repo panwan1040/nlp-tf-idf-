@@ -79,14 +79,27 @@
           </tr>
           <tr>
 
-            <form action="/find" method="post">
+
+
+
+            <!--  -->
+            <form method="post">
+              {{form.hidden_tag()}}
+
+
+
               <td>
-                <input type="text" required name="find-text">
+                <!-- <input type="text" required name="find-text"> -->
+                {{form.textfindbox(required='required')}}
               </td>
               <td>
-                <button name="forwardBtn" type="submit">Find</button>
+                {{form.submit}}
+                <!-- <button name="forwardBtn" type="submit">Find</button> -->
               </td>
             </form>
+
+
+            <!--  -->
           </tr>
         </table>
       </div>
@@ -151,6 +164,36 @@
 
       </table>
     </div>
+
+    <div class="container">
+      {% if total_word_count %}
+
+      <h2>
+        Total Search
+        {{total_word_count}}
+      </h2>
+      <h2>
+        From filename
+        <br>
+
+        {% for i in infilename %}
+        &ensp;&ensp;&ensp;{{i}}{{"\t"}}{{countinfile[loop.index-1]}}
+        <br>
+
+        {% endfor %}
+      </h2>
+
+
+      {{countinfile}}
+      {% elif total_word_count == 0 %}
+      <h2>Not found</h2>
+
+      {% endif %}
+    </div>
+
+
+
+
   </body>
   <script type=text/javascript src="{{url_for('static', filename='js/main.js')
     }}"></script>
