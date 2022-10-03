@@ -1,3 +1,7 @@
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import pandas as pd
+from pyexpat import model
+from lib2to3.pgen2 import token
 from distutils.filelist import findall
 from email import message
 from importlib.metadata import requires
@@ -113,8 +117,8 @@ def scooter(countfile):
         tfidf_weights, key=lambda w: w[1], reverse=True)
     for word_id, word_count in sort_tfidf_weights[:5]:
         words_tf_idf.append([dictionary.get(word_id), word_count])
-
-    return (words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count)
+    doccc = doc
+    return (words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count, doccc)
 
 # print(os.listdir(dir_path), "ssssssssssssssssssss")
 
@@ -128,7 +132,7 @@ class findform(FlaskForm):
 def upload():
     formfind = findform()
     textfind = ''
-    global words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count
+    global words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count, doccc
 
     if (formfind.validate_on_submit()):
         textfindbox = formfind.textfindbox.data
@@ -145,11 +149,14 @@ def upload():
         print(tmpnamesave)
 
         countinfile = []
+        # print(doccc[word_id])
         for i in docsfor:
             if len(re.findall(textfindbox, i)) > 0:
-                countinfile.append(len(re.findall(textfindbox, i.lower())))
+                countinfile.append(
+                    len(re.findall(textfindbox.lower(), i.lower())))
 
-        return render_template('index.html', words_gen=words_gen, words_tf_idf=words_tf_idf, filenamessave=filenamessave, form=formfind, infilename=tmpnamesave, countinfile=countinfile, total_word_count=total_word_count[word_id])
+        # total_word_count[word_id]
+        return render_template('index.html', words_gen=words_gen, words_tf_idf=words_tf_idf, filenamessave=filenamessave, form=formfind, infilename=tmpnamesave, countinfile=countinfile, total_word_count=sum(countinfile))
         # return redirect(url_for('find_func', textfindbox=session["textfindbox"]))
 
     if request.method == 'POST':
@@ -160,7 +167,7 @@ def upload():
             countfile.append(os.path.join(
                 app.config["UPLOAD_PATH"], f.filename))
 
-        words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count = scooter(
+        words_gen, words_tf_idf, dictionary, articles, docsfor, total_word_count, doccc = scooter(
             countfile)
 
         return render_template('index.html', words_gen=words_gen, words_tf_idf=words_tf_idf, form=formfind)
@@ -267,65 +274,54 @@ def spacy_():
     return render_template('spacy.html', form=form, text=text)
 
 
-# @app.route('/spacy2', methods=['POST', 'GET'])
-# def spacy_2():
-#     form=spacyform()
-#     text = False
-#     ent = []
-#     colors = {'CARDINAL':'#3B7573', 'DATE':'#493770', 'EVENT':'#7F4D85', 'FAC':'#B8587B', 'GPE':'#EEBE8F', 'LANGUAGE':'#925BB3',
-#         'LAW':'#7055AB', 'LOC':'#3C2B61', 'MONEY':'#FFE7BD', 'NORP':'#FF4F7E', 'ORDINAL':'#8CC63E', 'ORG':'#F02C89', 'PERCENT':'#FB943B',
-#         'PERSON':'#F4CD26', 'PRODUCT':'#07206D', 'QUANTITY':'#F75959', 'TIME':'#F79D39', 'WORK_OF_ART':'#15BED1'}
+# fakenews
 
 
-#     if form.validate_on_submit():
-#         nlp = spacy.load('en_core_web_sm')
-
-#         text = form.text.data
-#         doc=nlp(text)
-
-#         if(form.ch1.data):
-#             ent.append(form.ch1.label.text)
-#         if(form.ch2.data):
-#             ent.append(form.ch2.label.text)
-#         if(form.ch3.data):
-#             ent.append(form.ch3.label.text)
-#         if(form.ch4.data):
-#             ent.append(form.ch4.label.text)
-#         if(form.ch5.data):
-#             ent.append(form.ch5.label.text)
-#         if(form.ch6.data):
-#             ent.append(form.ch6.label.text)
-#         if(form.ch7.data):
-#             ent.append(form.ch7.label.text)
-#         if(form.ch8.data):
-#             ent.append(form.ch8.label.text)
-#         if(form.ch9.data):
-#             ent.append(form.ch9.label.text)
-#         if(form.ch10.data):
-#             ent.append(form.ch10.label.text)
-#         if(form.ch11.data):
-#             ent.append(form.ch11.label.text)
-#         if(form.ch12.data):
-#             ent.append(form.ch12.label.text)
-#         if(form.ch13.data):
-#             ent.append(form.ch13.label.text)
-#         if(form.ch14.data):
-#             ent.append(form.ch14.label.text)
-#         if(form.ch15.data):
-#             ent.append(form.ch15.label.text)
-#         if(form.ch16.data):
-#             ent.append(form.ch16.label.text)
-#         if(form.ch17.data):
-#             ent.append(form.ch17.label.text)
-#         if(form.ch18.data):
-#             ent.append(form.ch18.label.text)
-
-#         options = {"ents": ent, "colors": colors}
-#         html=displacy.render(doc, style="ent" ,options=options)
-
-#         return render_template('spacy2.html',show_=Markup(html),text=text,form = form)
-#     return render_template('spacy2.html',form = form,text = text)
+class fakeform(FlaskForm):
+    text = TextAreaField("Text for check")
+    submit = SubmitField("Search")
 
 
+model_path = "fake-news-bert-base-uncased-minidataset"
+max_length = 512
+model = AutoModelForSequenceClassification.from_pretrained(model_path)
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+
+
+def get_prediction(text, convert_to_label=False):
+    # prepare our text into tokenized sequence
+    inputs = tokenizer(text, padding=True, truncation=True,
+                       max_length=max_length, return_tensors="pt")
+    # perform inference to our model
+    outputs = model(**inputs)
+    # get output probabilities by doing softmax
+    probs = outputs[0].softmax(1)
+    # executing argmax function to get the candidate label
+    d = {
+        0: "reliable",
+        1: "fake"
+    }
+    if convert_to_label:
+        return d[int(probs.argmax())]
+    else:
+        return int(probs.argmax())
+
+
+@app.route('/fakenews/', methods=['POST', 'GET'])
+def fakecheck():
+    formfake = fakeform()
+    if (formfake.validate_on_submit()):
+        textfindbox = formfake.text.data
+        predix = get_prediction(textfindbox)
+        if predix == 0:
+            predix = "reliable"
+        else:
+            predix = "fake"
+
+        return render_template('fakenews.html', formfake=formfake, predix=predix)
+    return render_template('fakenews.html', formfake=formfake)
+
+
+# ------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
