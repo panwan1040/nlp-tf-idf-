@@ -41,6 +41,10 @@ from spacy import displacy
 from IPython.core.display import display, HTML
 
 
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+# nltk.download('vader_lexicon')
+
+
 app = Flask(__name__)
 app.config["UPLOAD_PATH"] = "uploads"
 app.config["SECRET_KEY"] = "rrrrrrraaaaaaaaannnnnnnnddddddddoooooommmmmmmmm"
@@ -279,7 +283,7 @@ def spacy_():
 
 class fakeform(FlaskForm):
     text = TextAreaField("Text for check")
-    submit = SubmitField("Search")
+    submit = SubmitField("Let's go!!")
 
 
 model_path = "fake-news-bert-base-uncased-minidataset"
@@ -307,7 +311,7 @@ def get_prediction(text, convert_to_label=False):
         return int(probs.argmax())
 
 
-@app.route('/fakenews/', methods=['POST', 'GET'])
+@app.route('/fakenews', methods=['POST', 'GET'])
 def fakecheck():
     formfake = fakeform()
     if (formfake.validate_on_submit()):
@@ -320,6 +324,24 @@ def fakecheck():
 
         return render_template('fakenews.html', formfake=formfake, predix=predix)
     return render_template('fakenews.html', formfake=formfake)
+
+
+class sentform(FlaskForm):
+    text = TextAreaField("Text for check")
+    submit = SubmitField("Let's go!!")
+
+
+@app.route('/sentiment', methods=['POST', 'GET'])
+def senttimentAnalyzer():
+    formsent = sentform()
+    if (formsent.validate_on_submit()):
+        textfindbox = formsent.text.data
+        sentizer = SentimentIntensityAnalyzer()
+        scores = sentizer.polarity_scores(textfindbox)
+        print(scores.items(), "<---------sent")
+
+        return render_template('vader.html', formsent=formsent, predix=scores)
+    return render_template('vader.html', formsent=formsent)
 
 
 # ------------------------------
