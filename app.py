@@ -338,9 +338,17 @@ def senttimentAnalyzer():
         textfindbox = formsent.text.data
         sentizer = SentimentIntensityAnalyzer()
         scores = sentizer.polarity_scores(textfindbox)
-        print(scores.items(), "<---------sent")
+        print(scores["neg"], "<---------sent")
+        predix = "neg"
+        maxv = scores["neg"]
+        if(maxv < scores['neu']):
+            maxv = scores['neu']
+            predix = "neu"
+            if(maxv < scores['pos']):
+                maxv = scores['pos']
+                predix = "pos"
 
-        return render_template('vader.html', formsent=formsent, predix=scores)
+        return render_template('vader.html', formsent=formsent, predix=predix)
     return render_template('vader.html', formsent=formsent)
 
 
