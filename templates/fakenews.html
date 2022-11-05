@@ -10,20 +10,22 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    />
+      />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
-  <body>
-    
+  <body style="background-color: antiquewhite;">
+
     <nav role="navigation">
       <div id="menuToggle">
         <input type="checkbox" />
@@ -40,13 +42,48 @@
       </div>
     </nav>
 
-    <form action="" method="post">
-      {{formfake.hidden_tag()}} {{formfake.text(class="textareax")}}
-      {{formfake.submit}} {% if predix %} {{predix}} {% endif %}
-    </form>
+    <div class="box">
+      <center>
+        <h1 style="color: coral;">
+          fake or real
+        </h1>
+        <h3 style="color: darkslategrey;">news check</h3>
+      </center>
+    </div>
+    <div class="container" style="margin-top: -10%;">
+      <form action="" method="post">
+        {{formfake.hidden_tag()}} {{formfake.text(class="textareax")}}
+        <div class="butt1" style="color: brown ;">
+          {{formfake.submit}}
+        </div>
+
+      </form>
+      <h2 style="color: cornflowerblue;">
+        {% if predix %} {{predix}} {% endif %}
+      </h2>
+
+      <div class="dog">
+        <div class="dog-head">
+          <div class="dog-ears ears-left"></div>
+          <div class="dog-ears ears-right"></div>
+          <div class="dog-eyes"></div>
+          <div class="dog-mouth">
+            <div class="dog-nose"></div>
+            <div class="dog-tongue"></div>
+          </div>
+        </div>
+        <div class="dog-tail"></div>
+        <div class="dog-body">
+          <div class="dog-foot"></div>
+        </div>
+        <div class="ball"></div>
+      </div>
+    </div>
   </body>
   <script type=text/javascript src="{{url_for('static', filename='js/main.js')
     }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{
+    url_for('static',filename='css/dog.css') }}">
   <link rel="stylesheet" type="text/css" href="{{
     url_for('static',filename='css/spacy.css') }}">
 </html>

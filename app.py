@@ -327,8 +327,8 @@ def fakecheck():
 
 
 class sentform(FlaskForm):
-    text = TextAreaField("Text for check")
-    submit = SubmitField("Let's go!!")
+    text = TextAreaField("Text for check", id="todo")
+    submit = SubmitField("Let's go!!", id="subsent")
 
 
 @app.route('/sentiment', methods=['POST', 'GET'])
@@ -339,14 +339,14 @@ def senttimentAnalyzer():
         sentizer = SentimentIntensityAnalyzer()
         scores = sentizer.polarity_scores(textfindbox)
         print(scores["neg"], "<---------sent")
-        predix = "neg"
+        predix = "negative"
         maxv = scores["neg"]
         if(maxv < scores['neu']):
             maxv = scores['neu']
-            predix = "neu"
+            predix = "neutral"
             if(maxv < scores['pos']):
                 maxv = scores['pos']
-                predix = "pos"
+                predix = "positive"
 
         return render_template('vader.html', formsent=formsent, predix=predix)
     return render_template('vader.html', formsent=formsent)

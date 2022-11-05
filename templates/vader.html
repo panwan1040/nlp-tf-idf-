@@ -10,17 +10,19 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    />
+      />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
     <nav role="navigation">
@@ -38,14 +40,134 @@
         </ul>
       </div>
     </nav>
+    <div class="box">
+      <center>
+        <h1 style="color: rgb(153, 14, 14);">
+          sentiment
+        </h1>
+        <h3 style="color: #173515;">analysis</h3>
+      </center>
+    </div>
+    <!-- <div class="container" style="margin-top: -10%;"></div> -->
 
-    <form action="" method="post">
-      {{formsent.hidden_tag()}} {{formsent.text(class="textareax")}}
-      {{formsent.submit}} {% if predix %} {{predix}} {% endif %}
-    </form>
-  </body>
-  <script type=text/javascript src="{{url_for('static', filename='js/main.js')
-    }}"></script>
-  <link rel="stylesheet" type="text/css" href="{{
-    url_for('static',filename='css/spacy.css') }}">
-</html>
+    <div class="container" id="scccccc" style="margin-top: -10%;">
+      <form action="" method="post" id="todo-form">
+        {{formsent.hidden_tag()}} {{formsent.text(class="textareax")}}
+        <div class="butt1" style="color: brown ;">
+          {{formsent.submit}}
+        </div>
+      </form>
+
+
+    </div>
+    <div class="outer_wrapper">
+      <center>
+
+
+        <h1 style="color: antiquewhite; font-size: 100px;">
+          {% if predix %}
+
+
+          {{predix}}
+
+          {% endif %}
+        </h1>
+      </center>
+      <div class="wrapper">
+
+        <div class="cat_wrapper">
+          <div class="cat first_pose">
+            <div class="cat_head">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0
+                76.4
+                61.2">
+                <polygon class="eyes" points="63.8,54.1 50.7,54.1 50.7,59.6
+                  27.1,59.6 27.1,54.1 12.4,54.1 12.4,31.8 63.8,31.8 "/>
+                  <path
+                    d="M15.3,45.9h5.1V35.7h-5.1C15.3,35.7,15.3,45.9,15.3,45.9z
+                    M45.8,56.1V51H30.6v5.1H45.8z M61.1,35.7H56v10.2h5.1
+                    V35.7z
+                    M10.2,61.2v-5.1H5.1V51H0V25.5h5.1V15.3h5.1V5.1h5.1V0h5.1v5.1h5.1v5.1h5.1v5.1c0,0,15.2,0,15.2,0v-5.1h5.1V5.1H56V0h5.1v5.1
+                    h5.1v10.2h5.1v10.2h5.1l0,25.5h-5.1v5.1h-5.1v5.1H10.2z"/>
+                  </svg>
+
+                </div>
+                <div class="body">
+                  <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0
+                    91.7 40.8">
+                    <path class="st0"
+                      d="M91.7,40.8H0V10.2h5.1V5.1h5.1V0h66.2v5.1h10.2v5.1h5.1L91.7,40.8z"/>
+                    </svg>
+
+                    <div class="tail">
+                      <svg x="0px" y="0px" width="100%" height="100%"
+                        viewBox="0
+                        0 25.5 61.1">
+                        <polygon class="st0" points="10.2,56 10.2,50.9
+                          5.1,50.9
+                          5.1,40.7 0,40.7 0,20.4 5.1,20.4 5.1,10.2 10.2,10.2
+                          10.2,5.1 15.3,5.1
+                          15.3,0 25.5,0 25.5,10.2 20.4,10.2 20.4,15.3
+                          15.3,15.3
+                          15.3,20.4 10.2,20.4 10.2,40.7 15.3,40.7 15.3,45.8
+                          20.4,45.8 20.4,50.9
+                          25.5,50.9 25.5,61.1 15.3,61.1 15.3,56 "/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div class="front_legs">
+                      <div class="leg one">
+                        <svg x="0px" y="0px" width="100%" height="100%"
+                          viewBox="0 0 14 30.5">
+                          <polygon points="15.3,30.5 5.1,30.5 5.1,25.4 0,25.4
+                            0,0 15.3,0 "/>
+                          </svg>
+                        </div>
+                        <div class="leg two">
+                          <svg x="0px" y="0px" width="100%" height="100%"
+                            viewBox="0 0 14 30.5">
+                            <polygon points="15.3,30.5 5.1,30.5 5.1,25.4
+                              0,25.4
+                              0,0 15.3,0 "/>
+                            </svg>
+                          </div>
+                        </div>
+
+                        <div class="back_legs">
+                          <div class="leg three">
+                            <svg x="0px" y="0px" width="100%" height="100%"
+                              viewBox="0 0 14 30.5">
+                              <polygon points="15.3,30.5 5.1,30.5 5.1,25.4
+                                0,25.4 0,0 15.3,0 "/>
+                              </svg>
+                            </div>
+                            <div class="leg four">
+                              <svg x="0px" y="0px" width="100%" height="100%"
+                                viewBox="0 0 14 30.5">
+                                <polygon points="15.3,30.5 5.1,30.5 5.1,25.4
+                                  0,25.4 0,0 15.3,0 "/>
+                                </svg>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="ground"></div>
+
+                    </div>
+                  </body>
+
+                  <script type=text/javascript src="{{url_for('static',
+                    filename='js/main.js')
+                    }}"></script>
+                  <script type=text/javascript src="{{url_for('static',
+                    filename='js/cat.js')
+                    }}"></script>
+                  <link rel="stylesheet" type="text/css" href="{{
+                    url_for('static',filename='css/spacy.css') }}">
+
+                  <link rel="stylesheet" type="text/css" href="{{
+                    url_for('static',filename='css/cat.css') }}">
+                </html>
